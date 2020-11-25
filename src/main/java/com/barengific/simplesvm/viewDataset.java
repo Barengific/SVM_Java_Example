@@ -39,6 +39,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author barengistic
  */
 public class viewDataset extends JFrame {
+//
 
     public double wo1;
     public double wo2;
