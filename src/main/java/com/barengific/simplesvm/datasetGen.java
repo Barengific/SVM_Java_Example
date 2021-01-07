@@ -6,14 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 /**
  * @author barengistic
  */
-public class datasetGen {
+public class DatasetGen {
 
     private static final long serialVersionUID = 111222998L;
-    private static String fileLoc = "C:\\Users\\Admino\\Documents\\NetBeansProjects\\dataset.txt";
+    private static String trainLoc = "C:\\Users\\Admino\\Documents\\NetBeansProjects\\dataset.txt";
+    private static String testLoc = "C:\\Users\\Admino\\Documents\\NetBeansProjects\\testdata.txt";
 
     public static int getRandNo(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
@@ -21,13 +21,12 @@ public class datasetGen {
 
     public static int readData() {
         int x = 1;
-
         return x;
     }
-    
+
     public static void dataGen() {
         try {
-            FileWriter writer = new FileWriter(fileLoc, false);
+            FileWriter writer = new FileWriter(trainLoc, false);
 
             writer.append("ClassA");
             for (int i = 0; i < 20; i++) {
@@ -92,6 +91,20 @@ public class datasetGen {
 //            System.out.println(classC_XY.toString());
 //            System.out.println(classC_XY.get(1).get(1).toString());
 //            System.out.println("Finished Reading");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void testGen() {
+        try {
+            FileWriter writer = new FileWriter(testLoc, false);
+            for (int i = 0; i < 20; i++) {
+                writer.append(getRandNo(0, 60) + "," + getRandNo(0, 95) + "\r\n");
+            }
+            writer.close();
+            System.out.println("Finished Writing Test");
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -7,12 +7,14 @@ package com.barengific.simplesvm;
 
 //import cern.colt.Arrays;
 import java.util.Arrays;
+import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
 import org.ejml.simple.SimpleMatrix;
 
 /**
  *
  * @author Admino
  */
+
 public class Matrix {
 
     //public static void main(String args[]) {
@@ -50,8 +52,51 @@ public class Matrix {
         return ret;
 
     }
-//********************input matrix as parameter
 
+    public static double multiA(double[] aa, double[] bb) {
+        Vector2D aaa = new Vector2D(aa);
+        Vector2D bbb = new Vector2D(bb);
+
+        double ret = aaa.dotProduct(bbb);
+        return ret;
+
+    }
+
+    public static double[][] add(double[][] aa, double[][] bb) {
+
+        SimpleMatrix firstMatrix = new SimpleMatrix(aa);
+        SimpleMatrix secondMatrix = new SimpleMatrix(bb);
+
+        SimpleMatrix actual = firstMatrix.plus(secondMatrix);
+
+        double ret[][] = new double[actual.numRows()][actual.numCols()];
+
+        for (int i = 0; i < actual.numRows(); i++) {
+            for (int j = 0; j < actual.numCols(); j++) {
+                ret[i][j] = actual.get(i, j);
+            }
+        }
+        return ret;
+    }
+
+    public static double[][] subtract(double[][] aa, double[][] bb) {
+
+        SimpleMatrix firstMatrix = new SimpleMatrix(aa);
+        SimpleMatrix secondMatrix = new SimpleMatrix(bb);
+
+        SimpleMatrix actual = firstMatrix.minus(secondMatrix);
+
+        double ret[][] = new double[actual.numRows()][actual.numCols()];
+
+        for (int i = 0; i < actual.numRows(); i++) {
+            for (int j = 0; j < actual.numCols(); j++) {
+                ret[i][j] = actual.get(i, j);
+            }
+        }
+        return ret;
+    }
+
+//********************input matrix as parameter
     public static double[][] pose(double[][] aa) {
 
         int rows = aa.length;
